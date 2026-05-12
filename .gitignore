@@ -1,0 +1,9 @@
+.DS_Store
+.vscode
+node_modules/*
+static/js/*
+resources/_gen/
+public/
+*~
+.hugo_build.lock
+.idea/
