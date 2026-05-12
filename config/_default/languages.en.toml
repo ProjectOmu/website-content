@@ -9,19 +9,19 @@ title = "Blowfish"
   isoCode = "en"
   rtl = false
   dateFormat = "2 January 2006"
-  # logo = "img/logo.png"
+  logo = "img/omu.webp"
   # secondaryLogo = "img/secondary-logo.png"
-  # description = "My awesome website"
-  # copyright = "Copy, _right?_ :thinking_face:"
+  description = "ProjectOmu Homepage"
+  copyright = "MIT License, information on GitHub; in regards to content on this website not within thematic configuration."
 
-# [params.author]
-#   name = "Your name here"
-#   email = "youremail@example.com"
-#   image = "img/blowfish_logo.png"
+[params.author]
+  name = "ProjectOmu"
+  email = "ss14opal@gmail.com"
+  image = "img/omu.webp"
 #   imageQuality = 96
 #   headline = "I'm only human"
 #   bio = "A little bit about you"
-#   links = [
+  links = [
 #     { email = "mailto:hello@your_domain.com" },
 #     { link = "https://link-to-some-website.com/" },
 #     { amazon = "https://www.amazon.com/hz/wishlist/ls/wishlist-id" },
@@ -30,12 +30,12 @@ title = "Blowfish"
 #     { bluesky = "https://bsky.app/profile/username" },
 #     { codepen = "https://codepen.io/username" },
 #     { dev = "https://dev.to/username" },
-#     { discord = "https://discord.gg/invitecode" },
+    { discord = "https://discord.gg/omustation" },
 #     { dribbble = "https://dribbble.com/username" },
 #     { facebook = "https://facebook.com/username" },
 #     { flickr = "https://www.flickr.com/photos/username/" },
 #     { foursquare = "https://foursquare.com/username" },
-#     { github = "https://github.com/username" },
+    { github = "https://github.com/ProjectOmu/" },
 #     { gitlab = "https://gitlab.com/username" },
 #     { google = "https://www.google.com/" },
 #     { hashnode = "https://username.hashnode.dev" },
@@ -51,7 +51,7 @@ title = "Blowfish"
 #     { medium = "https://medium.com/username" },
 #     { microsoft = "https://www.microsoft.com/" },
 #     { orcid = "https://orcid.org/userid" },
-#     { patreon = "https://www.patreon.com/username" },
+    { patreon = "https://www.patreon.com/cw/OMUStation" } # Remember to append a comma if you uncomment anything below this.
 #     { pinterest = "https://pinterest.com/username" },
 #     { reddit = "https://reddit.com/user/username" },
 #     { researchgate = "https://www.researchgate.net/profile/username" },
@@ -76,4 +76,4 @@ title = "Blowfish"
 #     { ko-fi = "https://ko-fi.com/username" },
 #     { codeberg = "https://codeberg.org/username"},
 #     { printables = "https://www.printables.com/@username"},
-#   ]
+  ]
