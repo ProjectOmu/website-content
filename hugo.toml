@@ -1,0 +1,3 @@
+baseURL = 'https://projectomu.org/'
+locale = 'en-us'
+title = 'ProjectOmu'
