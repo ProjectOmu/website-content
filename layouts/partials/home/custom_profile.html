@@ -1,0 +1,50 @@
+{{ $disableImageOptimization := .Site.Params.disableImageOptimization | default false }}
+<article
+  class="{{ if not .Site.Params.homepage.showRecent }}
+    h-full
+  {{ end }} flex flex-col items-center justify-center text-center">
+  <header class="relative px-1 py-1 flex flex-col items-center mb-3">
+    {{ with .Site.Params.homepage.homepageImage }}
+      {{ $authorImage := "" }}
+      {{ if or (strings.HasPrefix . "http:") (strings.HasPrefix . "https:") }}
+        {{ $authorImage = resources.GetRemote . }}
+      {{ else }}
+        {{ $authorImage = resources.Get . }}
+      {{ end }}
+      {{ if $authorImage }}
+        {{ $final := $authorImage }}
+        {{ $squareImage := $authorImage }}
+        {{ if not (or $disableImageOptimization (eq $authorImage.MediaType.SubType "svg")) }}
+          {{ if and $.Site.Params.homepage.homepageImage_customWidth $.Site.Params.homepage.homepageImage_customHeight }}
+            {{ $final = $authorImage.Fill (printf "%dx%d q%d" $.Site.Params.homepage.homepageImage_customWidth $.Site.Params.homepage.homepageImage_customHeight ( $.Site.Params.Author.imagequality | default 96 )) }}
+          {{ else }}
+            {{ $final = $authorImage.Fill (print "288x288 q" ( $.Site.Params.Author.imagequality | default "96" )) }}
+          {{ end }}
+          {{ $squareImage = $authorImage.Crop (printf "%dx%d" $authorImage.Width $authorImage.Height ) }}
+        {{ end }}
+        <img
+          class="mb-2 h-auto w-auto"
+          width="{{ $.Site.Params.homepage.homepageImage_customWidth | default 360 }}"
+          height="{{ $.Site.Params.homepage.homepageImage_customHeight | default 360 }}"
+          alt="{{ $.Site.Params.Author.name | default `Author` }}"
+          src="{{ $final.RelPermalink }}"
+          data-zoom-src="{{ $squareImage.RelPermalink }}">
+      {{ end }}
+    {{ end }}
+    <h1 class="text-3xl font-extrabold">
+      {{ .Site.Params.custom_titles.homepage_welcome | default .Site.Title }}
+    </h1>
+    {{ with .Site.Params.custom_titles.homepage_description }}
+      <h2 class="text-xl text-neutral-500 dark:text-neutral-400">
+        {{ . | markdownify }}
+      </h2>
+    {{ end }}
+    <div class="mt-1 text-2xl">
+      {{ partialCached "author-links.html" . }}
+    </div>
+  </header>
+  <section class="prose dark:prose-invert w-full">{{ .Content }}</section>
+</article>
+<section>
+  {{ partial "recent-articles/main.html" . }}
+</section>

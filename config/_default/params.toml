@@ -53,8 +53,10 @@ forgejoDefaultServer = "https://v11.next.forgejo.org"
   showScrollToTop = true
 
 [homepage]
-  layout = "custom_card" # valid options: page, profile, hero, card, background, custom
-  #homepageImage = "IMAGE.jpg" # used in: hero, and card
+  layout = "custom_profile" # valid options: page, profile, hero, card, background, custom
+  homepageImage = "img/logo.png" # used in: hero, and card # * And used with custom_profile
+  homepageImage_customWidth = 750 # only used when layout equals custom_profile
+  homepageImage_customHeight = 422 # only used when layout equals custom_profile
   showRecent = false
   showRecentItems = 5
   showMoreLink = false

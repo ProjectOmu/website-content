@@ -4,6 +4,14 @@ label = "English"
 weight = 1
 title = "ProjectOmu"
 
+# Custom Parameters
+
+[params.custom_titles]
+  homepage_welcome = "Welcome to ProjectOmu, Home of OmuStation on SS14!"
+  homepage_description = "ProjectOmu is a community..."
+
+# Default Parameters
+
 [params]
   displayName = "EN"
   isoCode = "en"
