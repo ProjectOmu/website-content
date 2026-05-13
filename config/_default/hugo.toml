@@ -30,8 +30,9 @@ enableEmoji = true
 [taxonomies]
   tag = "tags"
   category = "categories"
-  author = "authors"
-  series = "series"
+# * Not using Authors and Series pages for the time being.
+  # author = "authors"
+  # series = "series"
 
 [sitemap]
   changefreq = 'daily'
