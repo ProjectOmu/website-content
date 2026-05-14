@@ -23,10 +23,11 @@
   weight = 51
 
 [[main]]
-  identifier = "SS14 Privacy Policy"
-  name = "SS14 Privacy Policy"
+  identifier = "PrivacyPolicies"
+  name = "Privacy Policies"
+  pre = "shield"
   parent = "About"
-  pageRef = "about/privacy_policies/ss14privacy"
+  pageRef = "about/privacy_policies"
 
 #[[main]]
 #  name = "Blog"
@@ -74,7 +75,33 @@
 # -- Footer Menu --
 # The footer menu is displayed at the bottom of the page, just before
 # the copyright notice. Configure as per the main menu above.
+[[footer]]
+  identifier = "DiscordFooter"
+  name = "Discord"
+  pre = "discord"
+  url = "https://discord.gg/omustation"
+  weight = 10
 
+[[footer]]
+  identifier = "GitHubFooter"
+  name = "GitHub"
+  pre = "github"
+  url = "https://github.com/ProjectOmu/"
+  weight = 11
+
+[[footer]]
+  identifier = "PatreonFooter"
+  name = "Patreon"
+  pre = "patreon"
+  url = "https://www.patreon.com/cw/OMUStation"
+  weight = 12
+
+[[footer]]
+  identifier = "PrivacyPoliciesFooter"
+  name = "Privacy Policies"
+  pre = "shield"
+  pageRef = "about/privacy_policies"
+  weight = 20
 
 # [[footer]]
 #   name = "Tags"
