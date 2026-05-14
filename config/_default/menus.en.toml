@@ -14,7 +14,13 @@
   identifier = "About"
   name = "About"
   pageRef = "about"
-  weight = 80
+  weight = 50
+
+[[main]]
+  identifier = "Contact"
+  name = "Contact"
+  pageRef = "about/contact"
+  weight = 51
 
 [[main]]
   identifier = "SS14 Privacy Policy"
