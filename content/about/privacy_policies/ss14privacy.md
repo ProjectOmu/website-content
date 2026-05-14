@@ -1,12 +1,15 @@
 +++
 title = "SS14 Privacy Policy"
+slug = "ss14"
 description = "Privacy Policy for SS14 Game Server Connections, including EU Resident GDPR Rights."
 summary = "The SS14 Privacy Policy and EU Resident GDPR Rights Privacy Policy"
 date = "2026-05-13"
+lastmod = "2026-05-13"
 layout = "single"
-showTableOfContents = "true"
-showDateUpdated = "true"
-showWordCount = "true"
+showPagination = false
+showTableOfContents = true
+showDateUpdated = true
+showWordCount = false
 +++
 
 # SS14 Game Server Privacy Policy
