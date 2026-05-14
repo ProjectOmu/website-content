@@ -23,7 +23,7 @@ This sub-section will outline terminology in relation to the SS14 Game Server Pr
 - Redialing: The process of automatic reconnection through the game's launcher to other servers, in line with the SS14 Hub's policy.
 - UUID (Universal Unique Identifier)/User ID: The 128-bit unique universal identification number associated with your user/game account with the SS14 Authentication Hub.
 - IP Address: The numerical label associated with your connection address to the network.
-- HWID (Hardware ID): The hashed identification number associated with your with your device's configuration, specifically the generated number in your hardware registry.
+- HWID (Hardware ID): The hashed identification number associated with your device's configuration, specifically the generated number in your hardware registry.
 - VPN (Virtual Private Network): A service that masks the IP Address and location of connection from your client device to a destination server.
 - Admin: Volunteer staff members that are part of ProjectOmu responsible for maintaining and enforcing rules on the SS14 game servers hosted under ProjectOmu.
 - Maintainer: Volunteer staff members that are part of ProjectOmu responsible for maintaining the repository and/or controlling configuration files for the server that may have access to logs or other information the server records.
