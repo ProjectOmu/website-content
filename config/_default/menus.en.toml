@@ -11,6 +11,18 @@
 # ordered by weight from lowest to highest.
 
 [[main]]
+  identifier = "Wiki"
+  name = "Wiki"
+  url = "https://wiki.projectomu.org/"
+  weight = 10
+
+[[main]]
+  identifier = "ServerStatus"
+  name = "Status"
+  url = "https://status.projectomu.org/"
+  weight = 11
+
+[[main]]
   identifier = "About"
   name = "About"
   pageRef = "about/about"
@@ -95,6 +107,27 @@
   pre = "patreon"
   url = "https://www.patreon.com/cw/OMUStation"
   weight = 12
+
+[[footer]]
+  identifier = "WikiFooter"
+  name = "Wiki"
+  pre = "book"
+  url = "https://wiki.projectomu.org/"
+  weight = 13
+
+[[footer]]
+  identifier = "ServerStatusFooter"
+  name = "Server Status"
+  pre = "server"
+  url = "https://status.projectomu.org/"
+  weight = 14
+
+[[footer]]
+  identifier = "ContactFooter"
+  name = "Contact"
+  pre = "envelope"
+  pageRef = "about/contact"
+  weight = 15
 
 [[footer]]
   identifier = "PrivacyPoliciesFooter"
