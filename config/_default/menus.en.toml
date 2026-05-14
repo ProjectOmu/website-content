@@ -13,7 +13,7 @@
 [[main]]
   identifier = "About"
   name = "About"
-  pageRef = "about"
+  pageRef = "about/about"
   weight = 50
 
 [[main]]
