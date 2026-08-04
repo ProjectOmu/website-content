@@ -23,6 +23,12 @@
   weight = 11
 
 [[main]]
+  identifier = "Downloads"
+  name = "Downloads"
+  url = "https://downloads.projectomu.org/"
+  weight = 12
+
+[[main]]
   identifier = "About"
   name = "About"
   pageRef = "about/about"
