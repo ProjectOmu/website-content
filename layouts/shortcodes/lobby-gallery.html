@@ -1,0 +1,70 @@
+<div class="lobby-gallery">
+  {{ $dataFile := .Page.Resources.Get "artists.yml" }}
+  {{ $metadata := slice }}
+  {{ if $dataFile }}
+    {{ $metadata = $dataFile.Content | transform.Unmarshal }}
+  {{ end }}
+
+  {{ range .Page.Resources.ByType "image" }}
+    {{ $currentImg := .Name }}
+    {{ $copyright := "" }}
+
+    {{ range $metadata }}
+      {{ if in .files $currentImg }}
+        {{ $copyright = .copyright }}
+      {{ end }}
+    {{ end }}
+
+    <figure>
+        <img
+            src="{{ .RelPermalink }}"
+            alt="{{ .Name | path.BaseName | humanize }}"
+            loading="lazy"
+        >
+        <figcaption>
+        <div class="artwork-title">{{ .Name | path.BaseName | humanize }}</div>
+        {{ if $copyright }}
+            <div class="artwork-author">By {{ $copyright }}</div>
+        {{ end }}
+        </figcaption>
+    </figure>
+  {{ end }}
+</div>
+
+<style>
+.lobby-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1rem;
+  width: 100vw;
+  max-width: 1000px;
+}
+
+.lobby-gallery figure {
+  margin: 0;
+}
+
+.lobby-gallery img {
+  display: block;
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.lobby-gallery figcaption {
+  padding: 0.5rem 0;
+  text-align: center;
+}
+
+.artwork-title {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.artwork-author {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  margin-top: 0.2rem;
+}
+</style>
