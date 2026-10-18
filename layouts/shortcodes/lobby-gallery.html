@@ -8,24 +8,27 @@
   {{ range .Page.Resources.ByType "image" }}
     {{ $currentImg := .Name }}
     {{ $copyright := "" }}
+    {{ $license := "" }}
 
     {{ range $metadata }}
       {{ if in .files $currentImg }}
         {{ $copyright = .copyright }}
+        {{ $license = .license }}
       {{ end }}
     {{ end }}
 
-    <figure>
-        <img
-            src="{{ .RelPermalink }}"
-            alt="{{ .Name | path.BaseName | humanize }}"
-            loading="lazy"
-        >
+    <figure class="gallery-item">
+        <div class="image-wrapper">
+            <img src="{{ .RelPermalink }}" alt="..." loading="lazy">
+            {{ if $license }}
+            <span class="license-badge">{{ $license }}</span>
+            {{ end }}
+        </div>
         <figcaption>
-        <div class="artwork-title">{{ .Name | path.BaseName | humanize }}</div>
-        {{ if $copyright }}
+            <div class="artwork-title">{{ .Name | path.BaseName | humanize }}</div>
+            {{ if $copyright }}
             <div class="artwork-author">By {{ $copyright }}</div>
-        {{ end }}
+            {{ end }}
         </figcaption>
     </figure>
   {{ end }}
@@ -66,5 +69,21 @@
   font-size: 0.8rem;
   opacity: 0.7;
   margin-top: 0.2rem;
+}
+
+.image-wrapper {
+  position: relative;
+}
+
+.license-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(0, 0, 0, 1);
+  color: #fff;
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  backdrop-filter: blur(4px);
 }
 </style>
