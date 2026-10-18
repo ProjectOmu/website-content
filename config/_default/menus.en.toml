@@ -29,6 +29,12 @@
   weight = 12
 
 [[main]]
+  identifier = "lobby-artwork"
+  name = "Lobby Art"
+  pageRef = "about/lobby-artwork"
+  weight = 50
+
+[[main]]
   identifier = "About"
   name = "About"
   pageRef = "about/about"
