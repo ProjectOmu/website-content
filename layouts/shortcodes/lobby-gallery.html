@@ -1,7 +1,7 @@
 <div class="lobby-gallery">
   <!-- Grab Images -->
   <!-- GitHub API will gives us .name and .download_url for later -->
-  {{ $apiUrl := "https://api.githu.com/repos/ProjectOmu/OmuStation/contents/Resources/Textures/_Omu/LobbyScreens" }}
+  {{ $apiUrl := "https://api.github.com/repos/ProjectOmu/OmuStation/contents/Resources/Textures/_Omu/LobbyScreens" }}
   {{ $fileList := slice }}
   
   {{ with try (resources.GetRemote $apiUrl) }}
