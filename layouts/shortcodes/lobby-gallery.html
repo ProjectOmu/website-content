@@ -1,36 +1,66 @@
 <div class="lobby-gallery">
-  {{ $dataFile := .Page.Resources.Get "artists.yml" }}
-  {{ $metadata := slice }}
-  {{ if $dataFile }}
-    {{ $metadata = $dataFile.Content | transform.Unmarshal }}
+  <!-- Grab Images -->
+  <!-- GitHub API will gives us .name and .download_url for later -->
+  {{ $apiUrl := "https://api.github.com/repos/ProjectOmu/OmuStation/contents/Resources/Textures/_Omu/LobbyScreens" }}
+  {{ $fileList := slice }}
+  
+  {{ with try (resources.GetRemote $apiUrl) }}
+    {{ with .Value }}
+      {{ $fileList = . | transform.Unmarshal }}
+    {{ end }}
   {{ end }}
 
-  {{ range .Page.Resources.ByType "image" }}
-    {{ $currentImg := .Name }}
-    {{ $copyright := "" }}
-    {{ $license := "" }}
+  <!-- Grab attributions file -->
+  {{ $attrUrl := "https://raw.githubusercontent.com/ProjectOmu/OmuStation/master/Resources/Textures/_Omu/LobbyScreens/attributions.yml" }}
+  {{ $metadata := slice }}
+  
+  {{ with try (resources.GetRemote $attrUrl) }}
+    {{ with .Value }}
+      {{ $metadata = .Content | transform.Unmarshal }}
+    {{ end }}
+  {{ end }}
 
-    {{ range $metadata }}
-      {{ if in .files $currentImg }}
-        {{ $copyright = .copyright }}
-        {{ $license = .license }}
+  {{ if and $fileList $metadata }}
+    <!-- Loop and display -->
+    {{ range $fileList }}
+      {{ if eq .type "file" }}
+        {{ $filename := .name }}
+        <!-- Only display valid extenstions -->
+        {{ if hasSuffix (lower $filename) ".webp" }}
+          {{ $imageUrl := .download_url }}
+
+          {{ $copyright := "" }}
+          {{ $license := "" }}
+          {{ range $metadata }}
+            {{ if in .files $filename }}
+              {{ $copyright = .copyright }}
+              {{ $license = .license }}
+            {{ end }}
+          {{ end }}
+
+          <!-- Skip displaying if some formatting is wrong -->
+          {{ if or (not $copyright) (not $license) }}
+            {{ continue }}
+          {{ end }}
+
+          <figure class="gallery-item">
+              <div class="image-wrapper">
+                  <img src="{{ $imageUrl }}" alt="{{ $filename | path.BaseName | humanize }}" loading="lazy">
+                  <span class="license-badge">{{ $license }}</span>
+              </div>
+              <figcaption>
+                  <div class="artwork-title">{{ $filename | path.BaseName | humanize }}</div>
+                  <div class="artwork-author">By {{ $copyright }}</div>
+              </figcaption>
+          </figure>
+        {{ end }}
       {{ end }}
     {{ end }}
-
-    <figure class="gallery-item">
-        <div class="image-wrapper">
-            <img src="{{ .RelPermalink }}" alt="..." loading="lazy">
-            {{ if $license }}
-            <span class="license-badge">{{ $license }}</span>
-            {{ end }}
-        </div>
-        <figcaption>
-            <div class="artwork-title">{{ .Name | path.BaseName | humanize }}</div>
-            {{ if $copyright }}
-            <div class="artwork-author">By {{ $copyright }}</div>
-            {{ end }}
-        </figcaption>
-    </figure>
+  {{ else }}
+    <!-- Error Check for invalid URLs -->
+    <div class="gallery-error">
+      <p class="error-message">Unable to access OmuStation repository...</p>
+    </div>
   {{ end }}
 </div>
 
@@ -85,5 +115,19 @@
   padding: 2px 6px;
   border-radius: 4px;
   backdrop-filter: blur(4px);
+}
+
+.gallery-error {
+  background: rgba(255, 75, 75, 0.1);
+  color: #ff6b6b;
+  padding: 2rem;
+  text-align: center;
+  width: 100vw;
+  max-width: 1000px;
+}
+
+.gallery-error .error-message {
+  font-size: 1.2rem;
+  opacity: 0.9;
 }
 </style>
